@@ -3,9 +3,9 @@ L = 5;
 M = 4;
 B = 3;
 
-a = rand(M,B);
-phi = rand(L,M);
-X = rand(L,B);
+a = randn(M,B);
+phi = randn(L,M);
+X = randn(L,B);
 
 lambda = 0.1;
 

@@ -1,10 +1,10 @@
-function [f,g] = objfun_a(x0,phi,I,lambda);
+function [f,g] = objfun_a(x0,phi,X,lambda);
 
 [L M] = size(phi);
-B = size(I,2);
+B = size(X,2);
 a = reshape(x0,M,B);
 
-E = I - phi*a;
+E = X - phi*a;
 
 f = 0.5*sum(E(:).^2) + lambda*sum(abs(a(:)));
 

@@ -2,8 +2,8 @@
 2d spatial convolution sparsenet!
 
 This program is not the fastest implementation of a 2d convolution generative
-model -- I'm sure you can probably get significant speed ups using FFTs to do
-the convolution.
+model -- I'm sure you can get significant speed ups using FFTs to do the
+convolution.
 
 The main point of this program is to allow exploration of the idea of hand-
 coding invariances. That is, to make it easy to include additional re-mapping

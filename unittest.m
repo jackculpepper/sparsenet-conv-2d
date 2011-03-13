@@ -2,15 +2,17 @@ clear
 
 
 L = 144;
-L = 225;
 L = 121;
+L = 225;
 Lsz = sqrt(L);
 
-M = 100;
 M = 25;
 M = 64;
 M = 36;
 M = 16;
+M = 100;
+M = 900;
+M = 400;
 Mrows = sqrt(M);
 
 Nsz = 128;
@@ -115,20 +117,16 @@ reinit_jumpstart
 
 
 
-display_every = 10;
+display_every = 1;
 save_every = 10;
 
 
 num_trials = 500;
 
-for B = 1:5;
-    sparsenet
-end
+for B = 1:5; sparsenet; end
 
 num_trials = 1000;
 sparsenet
 
-for target_angle = 0.03:-0.01:0.01
-    sparsenet
-end
+for target_angle = 0.03:-0.01:0.01 ; sparsenet ; end
 

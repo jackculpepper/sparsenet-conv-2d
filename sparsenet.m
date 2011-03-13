@@ -7,16 +7,15 @@ for t = 1:num_trials
     switch datasource
         case 'images'
 
-            i = ceil(K*rand);
-
             X = zeros(N,B);
 
             % extract subimages at random from this image to make data vector X
             for b = 1:B
+                i = ceil(K*rand);
                 r = buff + ceil((imsz-Nsz-2*buff)*rand);
                 c = buff + ceil((imsz-Nsz-2*buff)*rand);
 
-                X(:,b) = reshape(IMAGES(r:r+Nsz-1,c:c+Nsz-1), N, 1);
+                X(:,b) = reshape(IMAGES(r:r+Nsz-1,c:c+Nsz-1, i), N, 1);
             end
 
 
@@ -176,9 +175,12 @@ for t = 1:num_trials
 
         sfigure(6); colormap(gray); clf;
         a_xy = reshape(a(:,1), M, Wsz, Wsz);
-        for i=1:M
-            subplot(sqrt(M), sqrt(M), i);
-                imagesc(squeeze(a_xy(i,:,:)));
+
+        %% show a max of 25 xy maps -- drawing many takes a long time
+        Mdpy = min(Mrows, 5);
+        for m = 1:Mdpy^2
+            subplot(Mdpy, Mdpy, m);
+                imagesc(squeeze(a_xy(m,:,:)));
                 axis image; colorbar;
         end
 
@@ -252,3 +254,6 @@ for t = 1:num_trials
 
     update = update + 1;
 end
+
+eval(sprintf('save state/%s/matlab_up=%06d.mat', paramstr, update)); 
+
